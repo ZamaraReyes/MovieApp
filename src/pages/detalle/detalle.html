@@ -1,0 +1,74 @@
+<!--<ion-header>
+ <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{film.title}}</ion-title>
+  </ion-navbar>
+</ion-header>-->
+
+<ion-content>
+    <button ion-button (click)="close()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </button>
+    <div class="cabecera" [style.background-image]="'url(' + photo + ')'"></div>
+    <div class="informacion">
+        <div class="contenido1">
+            <div class="titulo">
+                <h2>{{film.title}}</h2>
+                <h3>{{votes.Year}}</h3>
+            </div>
+        
+            <div class="datos">
+                <ion-icon name="ios-clock-outline"></ion-icon>
+                <p>{{votes.Runtime}}</p>
+                <p>|</p>
+                <p>{{votes.Genre}}</p>
+            </div>
+        </div>
+        <div class="contenido2">
+            <div class="circulo">
+                <p>{{film.vote_average}}</p>
+            </div>
+        </div>
+        
+        <div class="linea">
+            <h3>Storyline</h3>
+        </div>
+        <div class="sipnosis">
+            <p>{{film.overview}} (C) {{votes.Production}}.</p>
+        </div>
+        
+        <div class="linea">
+            <h3>Trailer</h3>
+        </div>
+        <iframe frameborder="0" [src]="sanitizer.bypassSecurityTrustResourceUrl(videoUrl)" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        
+        <div class="linea">
+            <h3>You may also like</h3>
+        </div>
+        <ion-slides spaceBetween="3" pager>
+            <ion-slide>
+                <div class="similar" *ngFor="let similar of similarFilms; let i = index">
+                <div *ngIf="i < 3">
+                    <img (click)="goToFicha(similar.id, similar.imdb_id)" src={{similar.poster_path}}>
+                </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="similar" *ngFor="let similar of similarFilms | slice:3:6 ; let i = index">
+                <div *ngIf="i < 6">
+                    <img (click)="goToFicha(similar.id, similar.imdb_id)" src={{similar.poster_path}}>
+                </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="similar" *ngFor="let similar of similarFilms | slice:6:9 ; let i = index">
+                <div *ngIf="i < 9">
+                    <img (click)="goToFicha(similar.id, similar.imdb_id)" src={{similar.poster_path}}>
+                </div>
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </div>
+</ion-content>

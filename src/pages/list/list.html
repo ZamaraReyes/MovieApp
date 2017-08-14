@@ -7,17 +7,91 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+<ion-content padding>
+    <ion-list>
+        <ion-item (click)="goToListaPelis(28)">
+            <ion-avatar item-left>
+                <img src="">
+            </ion-avatar>
+            <h2>Acción</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(12)">
+            <ion-avatar item-left>
+                <img src="">
+            </ion-avatar>
+            <h2>Aventura</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(16)">
+            <ion-avatar item-left>
+                <img src="">
+            </ion-avatar>
+            <h2>Animación</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(35)">
+            <ion-icon name="ion-happy"></ion-icon>
+            <h2>Comedia</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(80)">
+            <ion-avatar item-left>
+                <img src="">
+            </ion-avatar>
+            <h2>Crimen</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(99)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>Documental</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(18)">
+            <ion-icon name="ion-sad"></ion-icon>
+            <h2>Drama</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(10751)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>Familiar</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(14)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>Fantasía</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(36)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>Históricas</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(27)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>Horror</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(10402)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>Música</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(9648)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>Misterio</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(10749)">
+            <ion-icon name="ion-heart"></ion-icon>
+            <h2>Romance</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(878)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>Ficción</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(10770)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>TV Movies</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(53)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>Thiller</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(10752)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>Guerra</h2>
+        </ion-item>
+        <ion-item (click)="goToListaPelis(37)">
+            <ion-icon name="ion-music-note"></ion-icon>
+            <h2>Western</h2>
+        </ion-item>
+    </ion-list>
 </ion-content>

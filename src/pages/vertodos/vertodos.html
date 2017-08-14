@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar
+      [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="onSearchInput()">
+    </ion-searchbar>
+    <div *ngIf="searching" class="spinner-container">
+        <ion-spinner></ion-spinner>
+    </div>
+    <div class="similar" *ngFor="let film of films">
+        <div>
+            <p>{{film.title}}</p>
+            <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+        </div>
+    </div>
+</ion-content>

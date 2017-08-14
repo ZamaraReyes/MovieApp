@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Prueb</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form>
+        <ion-list>
+            <ion-item>
+                <ion-label floating>ID Deezer</ion-label>
+                <ion-input type="text" name="deezerID" clearInput="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Correo</ion-label>
+                <ion-input type="email" name="email" clearInput="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>No soy un robot</ion-label>
+                <ion-checkbox required></ion-checkbox>
+            </ion-item>
+        </ion-list>
+        <button type="submit" ion-button block full icon-left>
+            <ion-icon name="send"></ion-icon>
+            Enviar
+        </button>
+    </form>
+</ion-content>

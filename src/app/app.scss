@@ -1,16 +1,284 @@
-// http://ionicframework.com/docs/theming/
+@font-face {
+    font-family: Roboto-Light;
+    src: url('../assets/fonts/roboto-light.ttf') format('ttf');
+}
 
+@font-face {
+    font-family: Roboto-Regular;
+    src: url('../assets/fonts/roboto-regular.ttf') format('ttf');
+}
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+@font-face {
+    font-family: Roboto-Medium;
+    src: url('../assets/fonts/roboto-medium.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: Roboto-Bold;
+    src: url('../assets/fonts/roboto-bold.ttf') format('ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+p, h2, h3 {
+    margin: 0; 
+}
+
+p, h2 {
+    color: #404040;
+}
+
+p {
+    font-family: Roboto-Regular;
+}
+
+h2 {
+    font-size: 20px;
+    font-family: Roboto-Medium;
+}
+
+h3 {
+    color: #eac955;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: Roboto-Bold;
+}
+
+ion-img {
+    background: none;
+}
+
+ion-slide div {
+    display: inline-block;
+}
+
+ion-app.ios [padding], ion-app.ios [padding] .scroll-content {
+    padding: 0;
+}
+
+ion-slide .similar p {
+    font-size: 14px;
+}
+
+ion-slides, .slide-zoom, .swiper-container {
+    height: 220px;
+}
+
+ion-input {
+    border-radius: 4px;
+    padding: 0 8px;
+    background-color: #E1E5E5;
+}
+
+iframe {
+    width: 100%;
+    padding: 8px 0;
+}
+
+ion-slides ion-slide h3 {
+    display: inline-block;
+}
+
+.cabecera {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.genero {
+    margin: 5px 10px 5px 0;
+    display: inline-block;
+    //padding: 6px 12px;
+    //border: 1px solid #ffffff;
+    border-radius: 4px;
+    border-color: #ffffff;
+}
+
+.fondoImagen {
+    width: 100%;
+    height: 200px;
+}
+
+.poster {
+    padding-right: 20px;
+    display: inline-block;
+    //padding-right: 20px;
+    //z-index: 0;
+    //position: absolute;
+}
+
+.poster ion-img {
+    width: 100px;
+    height: 165px;
+}
+
+.titulo {
+    padding-bottom: 4px;
+}
+
+.titular {
+    width: 80%;
+    display: inline-block;
+}
+
+.titulo h2, .titulo h3, .datos p, .sipnosis p  {
+    display: inline-block;
+}
+
+.titulo h2 {
+    padding-right: 8px;
+}
+
+.datos p:nth-child(2) {
+    padding: 0 8px;
+}
+
+.datos ion-icon {
+    color: #eac955;
+    margin-right: -4px;
+}
+
+.sipnosis {
+    padding: 8px 0;
+}
+
+.similar {
+    width: 33%;
+    padding: 6px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    display: inline-block;
+}
+
+.similar div {
+    display: inline-block;
+}
+
+.similar div img, .similar div p {
+    display: inline-block;
+}
+
+.generos h3 {
+    padding-right: 16px;
+}
+
+.informacion {
+    //height: 300px;
+    overflow: scroll;
+    bottom: 0;
+    //position: absolute;
+    //z-index: 0;
+    padding: 20px;
+    //vertical-align: bottom;
+    //background-color: rgba(0,0,0,0.8);
+}
+
+/*.informacion div:nth-child(2) {
+    padding-left: 10px;
+}*/
+
+.circulo {
+    float: right;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #eac955;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.circulo p {
+    color: #f3f3f3;
+    font-family: Roboto-Bold;
+}
+
+.contenido1, .contenido2 {
+    display: inline-block;
+}
+
+.contenido1 {
+    width: 86%;
+}
+
+.button-ios {
+    position: absolute;
+    border-radius: 50%;
+    margin: 8px;
+    width: 2.8em;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.btnderecho {
+    float: right;
+    left: 300px;
+}
+
+.informacion hr {
+    border: 1px solid #ebeef0;
+}
+
+.linea {
+    padding: 16px 0 4px 0;
+    border-bottom: 1.4px solid #eac955;
+}
+
+.linea div {
+    float: right;
+}
+
+.linea p {
+    text-transform: uppercase;
+}
+
+.linea div, .linea div p, .linea div h3, .linea h3 {
+    display: inline-block;
+}
+
+.linea div ion-icon {
+    color: #404040;
+}
+
+.col {
+    padding: 0;
+    display: inline-block;
+}
+
+.item-ios {
+    color: #ffffff;
+    background: #000000;
+}
+
+.fixed-content, .toolbar-background {
+    background-color: #f3f3f3;
+}
+
+.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
+    color: #E1E5E5;
+}
+
+.swiper-pagination-bullet-active {
+    background: #E1E5E5;
+}
+
+.swiper-pagination-bullet {
+    background: #eac955;
+}
+
+.flex-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+}

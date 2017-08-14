@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Generos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="cabecera" (click)="goToFicha(film.id, film.imdb_id)" [style.background-image]="'url(' + photo + ')'"></div>
+    <div *ngFor="let photo of photo">
+        <div class="cabecera" (click)="goToFicha(film.id, film.imdb_id)" [style.background-image]="'url(' + photo.photo + ')'"></div>
+    </div>
+    <ion-grid fixed>
+    <ion-list ion-row>
+        <ion-item ion-col col-2 *ngFor="let icon of iconGenres">
+            <ion-icon name="{{icon.icon}}"></ion-icon>
+        </ion-item>
+    </ion-list>
+  </ion-grid>
+  <ion-grid fixed>
+    <ion-list ion-row ion-col col-10>
+        <ion-item *ngFor="let genre of genreFilms">
+            <h2 (click)="goToListaPelis(genre.id)">{{genre.name}}</h2>
+        </ion-item>
+        <ion-img *ngFor="let film of films" src="http://image.tmdb.org/t/p/w500/{{film.backdrop_path}}"></ion-img>
+    </ion-list>
+  </ion-grid>
+</ion-content>
+

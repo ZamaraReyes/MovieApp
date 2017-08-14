@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{titleGenre}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="similar" *ngFor="let film of films">
+        <div>
+            <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+        </div>
+    </div>
+</ion-content>

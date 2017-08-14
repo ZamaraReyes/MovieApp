@@ -1,18 +1,184 @@
-<ion-header>
+<!--<ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Home</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="search"></ion-icon>
+    </button>
   </ion-navbar>
-</ion-header>
+</ion-header>-->
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <button ion-button class="btnderecho" (click)="goToBuscador()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+    <div *ngFor="let film of films; let i = index">
+    <div *ngIf="i < 1" class="cabecera" (click)="goToFicha(film.id, film.imdb_id)" [style.background-image]="'url(' + photo + ')'"></div>
+    </div>
+
+    <div class="informacion">
+    <div class="linea">
+        <h3>Up coming</h3>
+        <div (click)="goToVerTodos('upcoming')">
+            <p>See all</p>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+        </div>
+    </div>
+    
+    <ion-slides spaceBetween="3" pager>
+        <ion-slide>
+            <div class="similar" *ngFor="let film of films; let i = index">
+            <div *ngIf="i < 3">
+                <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+            </div>
+        </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="similar" *ngFor="let film of films | slice:3:6 ; let i = index">
+            <div *ngIf="i < 6">
+                <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+            </div>
+        </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="similar" *ngFor="let film of films | slice:6:9 ; let i = index">
+            <div *ngIf="i < 9">
+                <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+            </div>
+        </div>
+        </ion-slide>
+    </ion-slides>
+    
+    <div class="linea">
+        <h3>Top Rated</h3>
+        <div (click)="goToVerTodos('top_rated')">
+            <p>See all</p>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+        </div>
+    </div>
+    
+    <ion-slides spaceBetween="3" pager>
+        <ion-slide>
+            <div class="similar" *ngFor="let rated of filmsRated; let i = index">
+            <div *ngIf="i < 3">
+                <img (click)="goToFicha(rated.id, rated.imdb_id)" src={{rated.poster_path}}>
+            </div>
+        </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="similar" *ngFor="let rated of filmsRated | slice:3:6 ; let i = index">
+            <div *ngIf="i < 6">
+                <img (click)="goToFicha(rated.id, rated.imdb_id)" src={{rated.poster_path}}>
+            </div>
+        </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="similar" *ngFor="let rated of filmsRated | slice:6:9 ; let i = index">
+            <div *ngIf="i < 9">
+                <img (click)="goToFicha(rated.id, rated.imdb_id)" src={{rated.poster_path}}>
+            </div>
+        </div>
+        </ion-slide>
+    </ion-slides>
+    
+    <div class="linea">
+        <h3>Popular</h3>
+        <div (click)="goToVerTodos('popular')">
+            <p>See all</p>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+        </div>
+    </div>
+    
+    <ion-slides spaceBetween="3" pager>
+        <ion-slide>
+            <div class="similar" *ngFor="let popular of filmsPopular; let i = index">
+            <div *ngIf="i < 3">
+                <img (click)="goToFicha(popular.id, popular.imdb_id)" src={{popular.poster_path}}>
+            </div>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="similar" *ngFor="let popular of filmsPopular | slice:3:6 ; let i = index">
+            <div *ngIf="i < 6">
+                <img (click)="goToFicha(popular.id, popular.imdb_id)" src={{popular.poster_path}}>
+            </div>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="similar" *ngFor="let popular of filmsPopular | slice:6:9 ; let i = index">
+            <div *ngIf="i < 9">
+                <img (click)="goToFicha(popular.id, popular.imdb_id)" src={{popular.poster_path}}>
+            </div>
+            </div>
+        </ion-slide>
+    </ion-slides>
+        
+    <ion-slides spaceBetween="3" pager>
+        <ion-slide>
+            <div class="generos">
+                <div *ngFor="let genre of genreFilms; let i = index">
+                    <h3 *ngIf="i < 4" (click)="goToListGenre(genre.id)">{{genre.name}} </h3>
+                </div>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="generos">
+                <div *ngFor="let genre of genreFilms | slice:4:8 ; let i = index">
+                    <h3 *ngIf="i < 8">{{genre.name}} </h3>
+                </div>
+            </div>
+        </ion-slide>
+    </ion-slides>
+    <ion-slides spaceBetween="3" pager>
+        <ion-slide>
+            <div class="similar" *ngFor="let figen of filmsGenre; let i = index">
+            <div *ngIf="i < 3">
+                <img (click)="goToFicha(figen.id, figen.imdb_id)" src={{figen.poster_path}}>
+            </div>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="similar" *ngFor="let figen of filmsGenre| slice:3:6 ; let i = index">
+            <div *ngIf="i < 6">
+                <img (click)="goToFicha(figen.id, figen.imdb_id)" src={{figen.poster_path}}>
+            </div>
+            </div>
+        </ion-slide>
+    </ion-slides>
+    
+    </div>
+    
+
 
   <p>
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
   </p>
+    <ion-grid>
+        <ion-row>
+            <button ion-button full icon-left color="danger">
+                <ion-icon name="logo-youtube"></ion-icon>
+                Youtube
+            </button>
+            <button ion-button full icon-left color="dark">
+                <ion-icon name="logo-github"></ion-icon>
+                Github
+            </button>
+        </ion-row>
+    </ion-grid>
+    
+    <!--<ion-slides spaceBetween="3" pager>
+        <ion-slide>
+            <div *ngFor="let film of films | limitTo:4">
+                <img src={{film.poster_path}}>
+                <p>{{film.title}}</p>
+            </div>
+        </ion-slide>
+    </ion-slides>-->
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>

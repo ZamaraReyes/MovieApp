@@ -1,0 +1,17 @@
+<ion-content>
+    <button ion-button (click)="close()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </button>
+    <div *ngFor="let film of films; let i = index">
+        <div *ngIf="i < 1" class="cabecera" (click)="goToFicha(film.id, film.imdb_id)" [style.background-image]="'url(' + photo + ')'"></div>
+    </div>
+    <div class="informacion">
+        <form (ngSubmit)="logForm()">
+            <ion-input type="text" [(ngModel)]="film" name="film" placeholder="Search film"></ion-input>
+            <button ion-button type="submit" block (click)="goToBuscador(film)">g</button>
+        </form>
+        <div class="similar" *ngFor="let film of films">
+            <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+        </div>
+    </div>
+</ion-content>
