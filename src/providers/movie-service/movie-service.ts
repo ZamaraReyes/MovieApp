@@ -3,20 +3,25 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-import { Observable } from "rxjs/Rx";
-import 'rxjs/add/observable/merge';
-
 
 @Injectable()
 export class MovieServiceProvider {
     public film: any;
     public films: any;
+    public listID: string;
     
   constructor(
     public http: Http
   ) {
     this.film = [];
     this.films = [];
+    this.http.get('https://api.themoviedb.org/3/discover/movie?api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=2000&primary_release_date.lte=2017')
+        .map( res => res.json() )
+        .toPromise()
+        .then( data => {
+            this.films = data.results;
+            console.log(data);
+        })
   }
   
   getFilms(listID){
@@ -41,6 +46,12 @@ export class MovieServiceProvider {
         return this.http.get('https://api.themoviedb.org/3/movie/upcoming?api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&page=1')
             .map( res => res.json() )
             .toPromise();
+    }
+    
+    getAllFilms(){
+        return this.http.get('https://api.themoviedb.org/3/discover/movie?api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=2000&primary_release_date.lte=2017')
+        .map( res => res.json() )
+        .toPromise();
     }
     
     getListGenres(){
@@ -85,10 +96,9 @@ export class MovieServiceProvider {
         .toPromise();
     }
     
-    /*filterItems(searchTerm){
-
+    filterItems(searchTerm){
         return this.films.filter((film) => {
-            return this.film.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+            return film.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
         });      
-    }*/
+    }
 }

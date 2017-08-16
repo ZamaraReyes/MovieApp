@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
-import { Http } from '@angular/http';
-import { NgStyle } from '@angular/common';
-import { DomSanitizer, SafeUrl, SafeResourceUrl} from '@angular/platform-browser';
+//import { Http } from '@angular/http';
+//import { DomSanitizer } from '@angular/platform-browser';
 
 import {
     MovieServiceProvider
     }
     from '../../providers/movie-service/movie-service';
-
-import { Observable } from "rxjs/Rx";
-import 'rxjs/add/observable/merge';
-
+    
 
 @Component({
   selector: 'page-detalle',
@@ -33,8 +29,8 @@ export class DetallePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public ds: MovieServiceProvider,
-    public http: Http,
-    private sanitizer: DomSanitizer,
+    //public http: Http,
+    //private sanitizer: DomSanitizer,
     public viewCtrl:  ViewController
   ) {
     this.film = [];

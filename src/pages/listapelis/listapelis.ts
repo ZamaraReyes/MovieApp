@@ -11,9 +11,6 @@ import {
     }
     from '../../providers/movie-service/movie-service';
 
-import { Observable } from "rxjs/Rx";
-import 'rxjs/add/observable/merge';
-
 
 @Component({
   selector: 'page-listapelis',

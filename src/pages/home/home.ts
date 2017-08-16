@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Nav } from 'ionic-angular';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
-import {BrowserModule, DomSanitizer} from '@angular/platform-browser'
 
-import {
+/*import {
     ListapelisPage
     }
-    from '../listapelis/listapelis';
+    from '../listapelis/listapelis';*/
     
 import {
     VertodosPage
@@ -28,16 +28,16 @@ import {
     from '../../providers/movie-service/movie-service';
 
 
-import { Observable } from "rxjs/Rx";
-import 'rxjs/add/observable/merge';
-
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
   providers: [ MovieServiceProvider ]
 })
 export class HomePage {
+    @ViewChild(Nav) nav: Nav;
+    //rootPage = HomePage;
+    //buscadorPage: any = BuscadorPage;
+    
     public films: any;
     public filmsRated: any;
     public filmsPopular: any;
@@ -58,7 +58,6 @@ export class HomePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public ds: MovieServiceProvider,
-    private sanitizer: DomSanitizer,
     public loadingCtrl: LoadingController
   ) {
     this.films = [];
@@ -84,8 +83,13 @@ export class HomePage {
     this.navCtrl.push(VertodosPage, { listID: listID });
   }
   
+  OpenPage(page: any){
+    //this.menu.close();
+    this.nav.setRoot(page);
+  }
+  
   goToBuscador(){
-    this.navCtrl.push(BuscadorPage, {});
+    this.nav.setRoot(BuscadorPage);
   }
   
   goToListGenre(genreID) {

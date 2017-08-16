@@ -14,9 +14,10 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <button ion-button class="btnderecho" (click)="goToBuscador()">
-      <ion-icon name="search"></ion-icon>
-    </button>
+    <button ion-button class="btnderecho" (click)="OpenPage(BuscadorPage)">
+        <ion-icon name="search"></ion-icon>
+        </button>
+    
     <div *ngFor="let film of films; let i = index">
     <div *ngIf="i < 1" class="cabecera" (click)="goToFicha(film.id, film.imdb_id)" [style.background-image]="'url(' + photo + ')'"></div>
     </div>

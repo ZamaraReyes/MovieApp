@@ -10,9 +10,7 @@ import {
     MovieServiceProvider
     }
     from '../../providers/movie-service/movie-service';
-    
-import { Observable } from "rxjs/Rx";
-import 'rxjs/add/observable/merge';
+
 
 @Component({
   selector: 'page-buscador',
@@ -47,6 +45,7 @@ export class BuscadorPage {
   }
   
   goToBuscador(film){
+    this.films = [];
     this.ds.getFilmSearch(this.film)
         .then( data => {
             this.filmDetail = data.results;
@@ -56,7 +55,6 @@ export class BuscadorPage {
                 this.filmID = value.id;
                 this.ds.getFilmDetail(this.filmID)
                 .then( data => {
-                    //this.films = '';
                     this.films.push({
                         id: data.id,
                         imdb_id: data.imdb_id,
@@ -71,7 +69,26 @@ export class BuscadorPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.film)
+    this.ds.getAllFilms()
+        .then( data => {
+            console.log(data);
+            this.filmDetail = data.results;
+            this.photo = "http://image.tmdb.org/t/p/w500"+data.results[0].backdrop_path;
+            this.filmDetail.forEach( (value) => {
+                this.filmID = value.id;
+                this.ds.getFilmDetail(this.filmID)
+                .then( data => {
+                    this.films.push({
+                        id: data.id,
+                        imdb_id: data.imdb_id,
+                        poster_path: "http://image.tmdb.org/t/p/w500"+data.poster_path
+                    });
+                })
+            })
+        })
+        .catch(error => {
+            console.error(error);
+        })
   }
 
 }
