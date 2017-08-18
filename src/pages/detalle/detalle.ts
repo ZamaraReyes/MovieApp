@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 //import { Http } from '@angular/http';
-//import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import {
     MovieServiceProvider
@@ -30,7 +30,7 @@ export class DetallePage {
     public navParams: NavParams,
     public ds: MovieServiceProvider,
     //public http: Http,
-    //private sanitizer: DomSanitizer,
+    private sanitizer: DomSanitizer,
     public viewCtrl:  ViewController
   ) {
     this.film = [];

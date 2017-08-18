@@ -3,14 +3,19 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{titleGenre}}</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <div class="similar" *ngFor="let film of films">
-        <div>
-            <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+    <div *ngFor="let film of films; let i = index">
+        <div *ngIf="i < 1" class="cabecera" [style.background-image]="'url(' + photo + ')'"></div>
+    </div>
+    <div class="lista">
+        <div class="similar" *ngFor="let film of films">
+            <div>
+                <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+            </div>
         </div>
     </div>
 </ion-content>

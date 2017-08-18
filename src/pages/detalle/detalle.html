@@ -1,16 +1,16 @@
-<!--<ion-header>
+<ion-header>
  <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>{{film.title}}</ion-title>
   </ion-navbar>
-</ion-header>-->
+</ion-header>
 
 <ion-content>
-    <button ion-button (click)="close()">
+    <!--<button ion-button (click)="close()">
       <ion-icon name="ios-arrow-back"></ion-icon>
-    </button>
+    </button>-->
     <div class="cabecera" [style.background-image]="'url(' + photo + ')'"></div>
     <div class="informacion">
         <div class="contenido1">
@@ -22,8 +22,13 @@
             <div class="datos">
                 <ion-icon name="ios-clock-outline"></ion-icon>
                 <p>{{votes.Runtime}}</p>
-                <p>|</p>
-                <p>{{votes.Genre}}</p>
+                <!--<p>|</p>
+                <p>{{votes.Genre}}</p>-->
+                <div *ngFor="let genre of film.genres; let i = index">
+                    <div *ngIf="i < 3" class="genero">
+                        <p>{{genre.name}}</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="contenido2">

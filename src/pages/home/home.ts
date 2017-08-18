@@ -39,6 +39,7 @@ export class HomePage {
     //buscadorPage: any = BuscadorPage;
     
     public films: any;
+    public filmsPlaying: any;
     public filmsRated: any;
     public filmsPopular: any;
     public filmsComing: any;
@@ -53,6 +54,7 @@ export class HomePage {
     public videoFilm: string;
     public loader: any;
     public photo: string;
+    public photos: any;
     
   constructor(
     public navCtrl: NavController,
@@ -62,6 +64,7 @@ export class HomePage {
   ) {
     this.films = [];
     this.filmDetail = [];
+    this.filmsPlaying = [];
     this.filmsRated = [];
     this.filmsPopular = [];
     this.filmsComing = [];
@@ -71,6 +74,7 @@ export class HomePage {
     this.filmIMDB = this.navParams.get('filmIMDB');
     this.genreID = this.navParams.get('genreID');
     this.listID = this.navParams.get('listID');
+    this.photos = [];
     this.photo;
     //this.loader = this.loadingCtrl.create();
   }
@@ -92,46 +96,32 @@ export class HomePage {
     this.nav.setRoot(BuscadorPage);
   }
   
-  goToListGenre(genreID) {
-    this.ds.getListGenres()
+  ionViewDidLoad() {
+    this.ds.getFilmsPlaying()
         .then( data => {
-            this.genreFilms = data.genres;
-            this.genreFilms.forEach( (value) => {
-                this.genreID = value.id;
-                this.ds.getListFilms(this.genreID)
-                    .then(data => {
-                    this.filmDetail = data.results;
-                    this.filmDetail.forEach( (value) => {
-                        this.filmID = value.id;
-                        this.ds.getFilmDetail(this.filmID)
-                        .then( data => {
-                            this.filmsGenre.push({
-                                title: data.title,
-                                id: data.id,
-                                imdb_id: data.imdb_id,
-                                poster_path: "http://image.tmdb.org/t/p/w500"+data.poster_path,
-                                backdrop_path: "http://image.tmdb.org/t/p/w500"+data.backdrop_path,
-                                vote_average: data.vote_average
-                            });
-                        console.log(data)
+            this.filmDetail = data.results;
+            /*this.photo = "http://image.tmdb.org/t/p/w500"+data.results[0].backdrop_path;*/
+            this.filmDetail.forEach( (value) => {
+                this.filmID = value.id;
+                this.ds.getFilmDetail(this.filmID)
+                .then( data => {
+                    this.filmsPlaying.push({
+                        id: data.id,
+                        title: data.title,
+                        imdb_id: data.imdb_id,
+                        poster_path: "http://image.tmdb.org/t/p/w500"+data.poster_path
+                    });
+                    
+                    this.photos.push({
+                        photo: "http://image.tmdb.org/t/p/w500"+data.poster_path
                     })
-                    .catch(error => {
-                        console.error(error);
-                    })
-                
                 })
-                .catch(error => {
-                    console.error(error);
-                })
-            })
-            .catch(error => {
-                console.error(error);
             })
         })
-    })
-  }
-  
-  ionViewDidLoad() {    
+        .catch(error => {
+            console.error(error);
+        })
+        
     this.ds.getFilmsComing()
         .then( data => {
             this.filmDetail = data.results;
@@ -140,7 +130,7 @@ export class HomePage {
                 this.filmID = value.id;
                 this.ds.getFilmDetail(this.filmID)
                 .then( data => {
-                    this.films.push({
+                    this.filmsComing.push({
                         id: data.id,
                         imdb_id: data.imdb_id,
                         poster_path: "http://image.tmdb.org/t/p/w500"+data.poster_path
@@ -190,7 +180,7 @@ export class HomePage {
             console.error(error);
         })
     
-    /*this.ds.getListGenres()
+    this.ds.getListGenres()
         .then( data => {
             this.genreFilms = data.genres;
             this.genreFilms.forEach( (value) => {
@@ -210,22 +200,15 @@ export class HomePage {
                                 backdrop_path: "http://image.tmdb.org/t/p/w500"+data.backdrop_path,
                                 vote_average: data.vote_average
                             });
-                        console.log(data)
+                        //console.log(data)
                     })
-                    .catch(error => {
-                        console.error(error);
-                    })
-                
-                })
-                .catch(error => {
-                    console.error(error);
                 })
             })
             .catch(error => {
                 console.error(error);
             })
         })
-    })*/
+    })
         
     }
 }

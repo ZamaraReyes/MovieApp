@@ -11,16 +11,63 @@
 </ion-header>-->
 
 <ion-content>
-    <button ion-button menuToggle>
+    <!--<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <button ion-button class="btnderecho" (click)="OpenPage(BuscadorPage)">
         <ion-icon name="search"></ion-icon>
-        </button>
+        </button>-->
     
-    <div *ngFor="let film of films; let i = index">
-    <div *ngIf="i < 1" class="cabecera" (click)="goToFicha(film.id, film.imdb_id)" [style.background-image]="'url(' + photo + ')'"></div>
-    </div>
+    <ion-slides id="playing" spaceBetween="6" pager>
+        <ion-slide>
+            <div *ngFor="let playing of filmsPlaying; let i = index">
+                <div class="nowplaying">
+                    <p *ngIf="i < 1">{{playing.title}}</p>
+                </div>
+                <img *ngIf="i < 1" src="{{playing.poster_path}}" (click)="goToFicha(playing.id, playing.imdb_id)">
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div id="playing" *ngFor="let playing of filmsPlaying | slice:1:2 ; let i = index">
+                <div class="nowplaying">
+                    <p *ngIf="i < 2">{{playing.title}}</p>
+                </div>
+                <img *ngIf="i < 2" src="{{playing.poster_path}}" (click)="goToFicha(playing.id, playing.imdb_id)">
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div id="playing" *ngFor="let playing of filmsPlaying | slice:2:3 ; let i = index">
+                <div class="nowplaying">
+                    <p *ngIf="i < 3">{{playing.title}}</p>
+                </div>
+                <img *ngIf="i < 3" src="{{playing.poster_path}}" (click)="goToFicha(playing.id, playing.imdb_id)">
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div id="playing" *ngFor="let playing of filmsPlaying | slice:3:4 ; let i = index">
+                <div class="nowplaying">
+                    <p *ngIf="i < 4">{{playing.title}}</p>
+                </div>
+                <img *ngIf="i < 4" src="{{playing.poster_path}}" (click)="goToFicha(playing.id, playing.imdb_id)">
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div id="playing" *ngFor="let playing of filmsPlaying | slice:4:5 ; let i = index">
+                <div class="nowplaying">
+                    <p *ngIf="i < 5">{{playing.title}}</p>
+                </div>
+                <img *ngIf="i < 5" src="{{playing.poster_path}}" (click)="goToFicha(playing.id, playing.imdb_id)">
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div id="playing" *ngFor="let playing of filmsPlaying | slice:5:6 ; let i = index">
+                <div class="nowplaying">
+                    <p *ngIf="i < 6">{{playing.title}}</p>
+                </div>
+                <img *ngIf="i < 6" src="{{playing.poster_path}}" (click)="goToFicha(playing.id, playing.imdb_id)">
+            </div>
+        </ion-slide>
+    </ion-slides>
 
     <div class="informacion">
     <div class="linea">
@@ -33,23 +80,23 @@
     
     <ion-slides spaceBetween="3" pager>
         <ion-slide>
-            <div class="similar" *ngFor="let film of films; let i = index">
+            <div class="similar" *ngFor="let coming of filmsComing; let i = index">
             <div *ngIf="i < 3">
-                <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+                <img (click)="goToFicha(coming.id, coming.imdb_id)" src={{coming.poster_path}}>
             </div>
         </div>
         </ion-slide>
         <ion-slide>
-            <div class="similar" *ngFor="let film of films | slice:3:6 ; let i = index">
+            <div class="similar" *ngFor="let coming of filmsComing | slice:3:6 ; let i = index">
             <div *ngIf="i < 6">
-                <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+                <img (click)="goToFicha(coming.id, coming.imdb_id)" src={{coming.poster_path}}>
             </div>
         </div>
         </ion-slide>
         <ion-slide>
-            <div class="similar" *ngFor="let film of films | slice:6:9 ; let i = index">
+            <div class="similar" *ngFor="let coming of filmsComing | slice:6:9 ; let i = index">
             <div *ngIf="i < 9">
-                <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+                <img (click)="goToFicha(coming.id, coming.imdb_id)" src={{coming.poster_path}}>
             </div>
         </div>
         </ion-slide>
@@ -118,68 +165,6 @@
             </div>
         </ion-slide>
     </ion-slides>
-        
-    <ion-slides spaceBetween="3" pager>
-        <ion-slide>
-            <div class="generos">
-                <div *ngFor="let genre of genreFilms; let i = index">
-                    <h3 *ngIf="i < 4" (click)="goToListGenre(genre.id)">{{genre.name}} </h3>
-                </div>
-            </div>
-        </ion-slide>
-        <ion-slide>
-            <div class="generos">
-                <div *ngFor="let genre of genreFilms | slice:4:8 ; let i = index">
-                    <h3 *ngIf="i < 8">{{genre.name}} </h3>
-                </div>
-            </div>
-        </ion-slide>
-    </ion-slides>
-    <ion-slides spaceBetween="3" pager>
-        <ion-slide>
-            <div class="similar" *ngFor="let figen of filmsGenre; let i = index">
-            <div *ngIf="i < 3">
-                <img (click)="goToFicha(figen.id, figen.imdb_id)" src={{figen.poster_path}}>
-            </div>
-            </div>
-        </ion-slide>
-        <ion-slide>
-            <div class="similar" *ngFor="let figen of filmsGenre| slice:3:6 ; let i = index">
-            <div *ngIf="i < 6">
-                <img (click)="goToFicha(figen.id, figen.imdb_id)" src={{figen.poster_path}}>
-            </div>
-            </div>
-        </ion-slide>
-    </ion-slides>
     
     </div>
-    
-
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-    <ion-grid>
-        <ion-row>
-            <button ion-button full icon-left color="danger">
-                <ion-icon name="logo-youtube"></ion-icon>
-                Youtube
-            </button>
-            <button ion-button full icon-left color="dark">
-                <ion-icon name="logo-github"></ion-icon>
-                Github
-            </button>
-        </ion-row>
-    </ion-grid>
-    
-    <!--<ion-slides spaceBetween="3" pager>
-        <ion-slide>
-            <div *ngFor="let film of films | limitTo:4">
-                <img src={{film.poster_path}}>
-                <p>{{film.title}}</p>
-            </div>
-        </ion-slide>
-    </ion-slides>-->
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>

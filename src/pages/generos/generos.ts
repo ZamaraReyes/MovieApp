@@ -19,15 +19,14 @@ import {
 })
 export class GenerosPage {
     selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+
   public films: any;
   public filmDetail: any;
   public genreID: number;
   public filmID: number;
   public genreFilms: any;
   public photo: any;
-  iconGenres: Array<{icon: string}>;
+  public photos: any;
 
   constructor(
     public navCtrl: NavController,
@@ -38,28 +37,8 @@ export class GenerosPage {
     this.filmDetail = [];
     this.genreFilms = [];
     this.photo = [];
+    this.photos = [];
     this.filmID = this.navParams.get('filmID');
-    this.iconGenres = [
-        { icon: 'star' },
-        { icon: 'leaf' },
-        { icon: 'home' },
-        { icon: 'happy' },
-        { icon: 'home' },
-        { icon: 'videocamera' },
-        { icon: 'home' },
-        { icon: 'home' },
-        { icon: 'home' },
-        { icon: 'home' },
-        { icon: 'home' },
-        { icon: 'music-note' },
-        { icon: 'home' },
-        { icon: 'heart' },
-        { icon: 'planet' },
-        { icon: 'home' },
-        { icon: 'home' },
-        { icon: 'jet' },
-        { icon: 'home' }
-    ];
     this.genreID = this.navParams.get('genreID');
     //this.loader = this.loadingCtrl.create();
   }
@@ -77,9 +56,10 @@ export class GenerosPage {
                 this.ds.getListFilms(this.genreID)
                     .then(data => {
                     this.filmDetail = data.results;
-                    this.photo.push({
-                        photo: "http://image.tmdb.org/t/p/w500"+data.results[0].backdrop_path
-                    })
+                    console.log(data);
+                    this.photos.push({
+                        photo: "http://image.tmdb.org/t/p/w500"+data.results[3].backdrop_path
+                    })      
                     this.filmDetail.forEach( (value) => {
                         this.filmID = value.id;
                         this.ds.getFilmDetail(this.filmID)
@@ -92,15 +72,7 @@ export class GenerosPage {
                                 backdrop_path: "http://image.tmdb.org/t/p/w500"+data.backdrop_path,
                                 vote_average: data.vote_average
                             });
-                        console.log(data)
                     })
-                    .catch(error => {
-                        console.error(error);
-                    })
-                
-                })
-                .catch(error => {
-                    console.error(error);
                 })
             })
             .catch(error => {

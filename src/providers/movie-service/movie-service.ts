@@ -48,6 +48,12 @@ export class MovieServiceProvider {
             .toPromise();
     }
     
+    getFilmsPlaying(){
+        return this.http.get('https://api.themoviedb.org/3/movie/now_playing?api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&page=1')
+            .map( res => res.json() )
+            .toPromise();
+    }
+    
     getAllFilms(){
         return this.http.get('https://api.themoviedb.org/3/discover/movie?api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=2000&primary_release_date.lte=2017')
         .map( res => res.json() )

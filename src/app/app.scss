@@ -24,12 +24,21 @@
     box-sizing: border-box;
 }
 
-p, h2, h3 {
+p, h1, h2, h3 {
     margin: 0; 
 }
 
-p, h2 {
-    color: #404040;
+h1 {
+    line-height: 0.8;
+    color: #f3f3f3;
+    font-size: 24px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-family: Roboto-Bold;
+}
+
+p, h2, .toolbar-title-ios {
+    color: #f3f3f3;
 }
 
 p {
@@ -42,7 +51,7 @@ h2 {
 }
 
 h3 {
-    color: #eac955;
+    color: #3c444b;
     font-size: 14px;
     text-transform: uppercase;
     font-family: Roboto-Bold;
@@ -60,23 +69,24 @@ ion-app.ios [padding], ion-app.ios [padding] .scroll-content {
     padding: 0;
 }
 
-ion-slide .similar p {
-    font-size: 14px;
+ion-slide .similar {
+    padding-top: 20px;
 }
 
 ion-slides, .slide-zoom, .swiper-container {
-    height: 220px;
+    height: 244px;
 }
 
 ion-input {
-    border-radius: 4px;
+    border-radius: 8px;
     padding: 0 8px;
-    background-color: #E1E5E5;
+    color: #f3f3f3;
+    border: 1px solid #f3f3f3;
 }
 
 iframe {
     width: 100%;
-    padding: 8px 0;
+    padding: 20px 0;
 }
 
 ion-slides ion-slide h3 {
@@ -92,11 +102,33 @@ ion-slides ion-slide h3 {
 
 .genero {
     margin: 5px 10px 5px 0;
+    padding: 5px 10px;
     display: inline-block;
-    //padding: 6px 12px;
-    //border: 1px solid #ffffff;
-    border-radius: 4px;
-    border-color: #ffffff;
+    border-radius: 24px;
+    background-color: #3c444b;
+}
+
+.genero p {
+    font-size: 12px;
+    font-family: Roboto-Medium;
+}
+
+.datos div {
+    display: inline-block;
+}
+
+.listagenero {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(27,33,40,0.2)
+}
+
+.listagenero h1 {
+    padding: 90px 20px;
+}
+
+.listagenero div {
+    height: 200px;
 }
 
 .fondoImagen {
@@ -139,12 +171,12 @@ ion-slides ion-slide h3 {
 }
 
 .datos ion-icon {
-    color: #eac955;
+    color: #cdb900;
     margin-right: -4px;
 }
 
 .sipnosis {
-    padding: 8px 0;
+    padding: 16px 0;
 }
 
 .similar {
@@ -163,24 +195,22 @@ ion-slides ion-slide h3 {
     display: inline-block;
 }
 
+.linea div p {
+    color: #cdb900;
+    font-family: Roboto-Medium;
+}
+
 .generos h3 {
     padding-right: 16px;
 }
 
 .informacion {
-    //height: 300px;
-    overflow: scroll;
-    bottom: 0;
-    //position: absolute;
-    //z-index: 0;
     padding: 20px;
-    //vertical-align: bottom;
-    //background-color: rgba(0,0,0,0.8);
 }
 
-/*.informacion div:nth-child(2) {
-    padding-left: 10px;
-}*/
+.lista {
+    padding: 10px;
+}
 
 .circulo {
     float: right;
@@ -190,7 +220,7 @@ ion-slides ion-slide h3 {
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    background-color: #eac955;
+    background-color: #cdb900;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -229,7 +259,7 @@ ion-slides ion-slide h3 {
 
 .linea {
     padding: 16px 0 4px 0;
-    border-bottom: 1.4px solid #eac955;
+    border-bottom: 1.4px solid #3c444b;
 }
 
 .linea div {
@@ -237,15 +267,15 @@ ion-slides ion-slide h3 {
 }
 
 .linea p {
-    text-transform: uppercase;
+    padding-right: 4px;
 }
 
 .linea div, .linea div p, .linea div h3, .linea h3 {
     display: inline-block;
 }
 
-.linea div ion-icon {
-    color: #404040;
+.linea div ion-icon, .titulo h3 {
+    color: #cdb900;
 }
 
 .col {
@@ -253,17 +283,8 @@ ion-slides ion-slide h3 {
     display: inline-block;
 }
 
-.item-ios {
-    color: #ffffff;
-    background: #000000;
-}
-
-.fixed-content, .toolbar-background {
-    background-color: #f3f3f3;
-}
-
-.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
-    color: #E1E5E5;
+.fixed-content, .toolbar-background, .tabs-ios .tabbar {
+    background-color: #1b2128;
 }
 
 .swiper-pagination-bullet-active {
@@ -271,7 +292,43 @@ ion-slides ion-slide h3 {
 }
 
 .swiper-pagination-bullet {
-    background: #eac955;
+    background: #3c444b;
+}
+
+.tabs-ios .tabbar, .header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
+    border-color: #cdb900;
+}
+
+.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default , .tabs-ios .tab-button-icon, .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+    color: #cdb900;
+}
+
+.swiper-pagination-bullet:nth-child(0) {
+    background: #ffffff;
+}
+
+#playing p {
+    z-index: 2;
+    color: #f3f3f3;
+    padding: 12px;
+    position: absolute;
+    font-family: Roboto-Medium;
+}
+
+#playing img {
+    top: -100px;
+    width: 100%;
+    margin: 0 auto;
+    vertical-align: middle;
+    position: relative;
+}
+
+.nowplaying {
+    width: 100%;
+    height: 45px;
+    z-index: 2;
+    position: absolute;
+    background-color: rgba(27,33,40,0.6);
 }
 
 .flex-container {

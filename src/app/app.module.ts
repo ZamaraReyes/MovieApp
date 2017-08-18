@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
+import { TabsPage } from '../pages/tabs/tabs';
 
 import {
     MyApp
@@ -62,6 +63,7 @@ import { MovieServiceProvider } from '../providers/movie-service/movie-service';
     DetallePage,
     VertodosPage,
     BuscadorPage,
+    TabsPage,
     Prueba
   ],
   imports: [
@@ -79,6 +81,7 @@ import { MovieServiceProvider } from '../providers/movie-service/movie-service';
     DetallePage,
     VertodosPage,
     BuscadorPage,
+    TabsPage,
     Prueba
   ],
   providers: [

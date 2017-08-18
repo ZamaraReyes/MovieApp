@@ -24,6 +24,8 @@ export class ListapelisPage {
   public genreID: number;
   public filmID: number;
   public filmIMDB: string;
+  public photos: any;
+  public photo: string;
   
   constructor(
     public navCtrl: NavController,
@@ -32,6 +34,8 @@ export class ListapelisPage {
   ) {
     this.films = [];
     this.filmDetail = [];
+    this.photos = [];
+    this.photo;
     this.genreID = this.navParams.get('genreID');
     this.filmID = this.navParams.get('filmID');
     this.filmIMDB = this.navParams.get('filmIMDB');
@@ -49,6 +53,7 @@ export class ListapelisPage {
     this.ds.getListFilms(this.genreID)
         .then( data => {
             this.filmDetail = data.results;
+            this.photo = "http://image.tmdb.org/t/p/w500"+data.results[0].backdrop_path;
             this.filmDetail.forEach( (value) => {
                 this.filmID = value.id;
                 this.ds.getFilmDetail(this.filmID)
@@ -67,15 +72,7 @@ export class ListapelisPage {
                     this.films.push({
                         runtime: data.Runtime
                     });
-                    console.log(data);
-                    console.log(this.films.imdb_id);
                 })
-                .catch(error => {
-                    console.error(error);
-                })
-                .catch(error => {
-                    console.error(error);
-                }) 
             })
             console.log(data);
         })
