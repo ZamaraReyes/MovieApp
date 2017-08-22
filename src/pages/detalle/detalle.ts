@@ -51,7 +51,13 @@ export class DetallePage {
     this.ds.getFilmDetail(this.filmID)
         .then( data => {
             this.film = data;
-            this.photo = "http://image.tmdb.org/t/p/w500"+data.backdrop_path;
+            console.log(data);
+            if(data.backdrop_path == null){
+                this.photo = "http://image.tmdb.org/t/p/w500"+data.poster_path;
+            }else {
+                this.photo = "http://image.tmdb.org/t/p/w500"+data.backdrop_path;
+            }
+
         })
         .catch(error => {
             console.error(error);
@@ -60,6 +66,7 @@ export class DetallePage {
     this.ds.getFilmVotes(this.filmIMDB)
         .then( data => {
             this.votes = data;
+            console.log(data);
         })
         .catch(error => {
             console.error(error);
@@ -78,9 +85,6 @@ export class DetallePage {
                         imdb_id: data.imdb_id,
                         poster_path: "http://image.tmdb.org/t/p/w500"+data.poster_path
                     });
-                })
-                .catch(error => {
-                    console.error(error);
                 })
             })
         })

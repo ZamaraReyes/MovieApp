@@ -9,19 +9,13 @@ export class MovieServiceProvider {
     public film: any;
     public films: any;
     public listID: string;
+    perpage: number = 5;
     
   constructor(
     public http: Http
   ) {
     this.film = [];
     this.films = [];
-    this.http.get('https://api.themoviedb.org/3/discover/movie?api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=2000&primary_release_date.lte=2017')
-        .map( res => res.json() )
-        .toPromise()
-        .then( data => {
-            this.films = data.results;
-            console.log(data);
-        })
   }
   
   getFilms(listID){
@@ -29,6 +23,28 @@ export class MovieServiceProvider {
         .map( res => res.json() )
         .toPromise();
     }
+    
+  getFilms2(listID){
+    return this.http.get('https://api.themoviedb.org/3/movie/'+listID+'?api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&page=2')
+        .map( res => res.json() )
+        .toPromise();
+    }
+    
+  getFilms3(listID){
+    return this.http.get('https://api.themoviedb.org/3/movie/'+listID+'?api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&page=3')
+        .map( res => res.json() )
+        .toPromise();
+    }
+    
+    /*getLoadFilms(start:number=1){
+    return new Promise(resolve => {
+        this.http.get('https://api.themoviedb.org/3/movie/upcoming?api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&page='+start)
+            .map( res => res.json() )
+            .subscribe(data => {
+                resolve(data);
+            });
+        });
+    }*/
     
     getFilmsBest(){
         return this.http.get('https://api.themoviedb.org/3/movie/top_rated?api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&page=1')
@@ -72,6 +88,18 @@ export class MovieServiceProvider {
         .toPromise();
     }
     
+    getListFilms2(genreID){
+        return this.http.get('https://api.themoviedb.org/3/genre/'+genreID+'/movies?page=2&api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&include_adult=false&sort_by=created_at.asc')
+        .map( res => res.json() )
+        .toPromise();
+    }
+    
+    getListFilms3(genreID){
+        return this.http.get('https://api.themoviedb.org/3/genre/'+genreID+'/movies?page=3&api_key=d59205b54cbec181f81ddd43001c619b&language=en-US&include_adult=false&sort_by=created_at.asc')
+        .map( res => res.json() )
+        .toPromise();
+    }
+    
     getFilmDetail(filmID){
         return this.http.get('https://api.themoviedb.org/3/movie/'+filmID+'?api_key=d59205b54cbec181f81ddd43001c619b&language=en-US')
         .map( res => res.json() )
@@ -100,11 +128,5 @@ export class MovieServiceProvider {
         return this.http.get('https://omdbapi.com?i='+filmIMDB+'&apikey=3370463f')
         .map( res => res.json() )
         .toPromise();
-    }
-    
-    filterItems(searchTerm){
-        return this.films.filter((film) => {
-            return film.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-        });      
     }
 }

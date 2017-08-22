@@ -3,14 +3,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title></ion-title>
+    <ion-title>{{genreName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <div *ngFor="let film of films; let i = index">
+    <!--<div *ngFor="let film of films; let i = index">
         <div *ngIf="i < 1" class="cabecera" [style.background-image]="'url(' + photo + ')'"></div>
-    </div>
+    </div>->-->
     <div class="lista">
         <div class="similar" *ngFor="let film of films">
             <div>

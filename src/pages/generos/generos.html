@@ -1,20 +1,29 @@
-<!--<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Generos</ion-title>
-  </ion-navbar>
-</ion-header>-->
-
 <ion-content>
     <div class="listagenero">
         <div *ngFor="let genre of genreFilms">
-            <h1 (click)="goToListaPelis(genre.id)">{{genre.name}}</h1>
+            <h1 (click)="goToListaPelis(genre.id, genre.name)">{{genre.name}}</h1>
         </div>
     </div>
-    <div *ngFor="let photo of photos">
+    <div class="cabecera" [style.background-image]="'url(' + photoAction + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoAdventure + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoAnimation + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoComedy + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoCrime + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoDocumentary + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoDrama + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoFamily + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoFantasy + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoHistory + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoHorror + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoMusic + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoMistery + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoRomance + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoScience + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoMovie + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoThriller + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoWar + ')'"></div>
+    <div class="cabecera" [style.background-image]="'url(' + photoWestern + ')'"></div>
+    <!--<div *ngFor="let photo of photos">
         <div class="cabecera" [style.background-image]="'url(' + photo.photo + ')'"></div>
-    </div>
+    </div>-->
 </ion-content>
-

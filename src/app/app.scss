@@ -101,15 +101,18 @@ ion-slides ion-slide h3 {
 }
 
 .genero {
-    margin: 5px 10px 5px 0;
+    margin: 5px 5px 5px 0;
     padding: 5px 10px;
     display: inline-block;
     border-radius: 24px;
     background-color: #3c444b;
 }
 
-.genero p {
+.datos p, .genero p {
     font-size: 12px;
+}
+
+.genero p {
     font-family: Roboto-Medium;
 }
 
@@ -131,24 +134,6 @@ ion-slides ion-slide h3 {
     height: 200px;
 }
 
-.fondoImagen {
-    width: 100%;
-    height: 200px;
-}
-
-.poster {
-    padding-right: 20px;
-    display: inline-block;
-    //padding-right: 20px;
-    //z-index: 0;
-    //position: absolute;
-}
-
-.poster ion-img {
-    width: 100px;
-    height: 165px;
-}
-
 .titulo {
     padding-bottom: 4px;
 }
@@ -166,8 +151,24 @@ ion-slides ion-slide h3 {
     padding-right: 8px;
 }
 
+.datos div {
+    display: inline-block;
+}
+
+.tiempo {
+    width: 22%;
+    padding: 8px 0;
+    vertical-align: top;
+}
+
+.generos {
+    width: 76%;
+    height: 30px;
+    overflow: hidden;
+}
+
 .datos p:nth-child(2) {
-    padding: 0 8px;
+    padding: 0 6px;
 }
 
 .datos ion-icon {
@@ -220,11 +221,15 @@ ion-slides ion-slide h3 {
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    background-color: #cdb900;
+    background-color: rgba(205,185,0,0.8);
     display: flex;
     justify-content: center;
     align-content: center;
     flex-direction: column;
+    position: absolute;
+    top: 140px;
+    margin: 10px;
+    right: 0;
 }
 
 .circulo p {
@@ -232,12 +237,30 @@ ion-slides ion-slide h3 {
     font-family: Roboto-Bold;
 }
 
-.contenido1, .contenido2 {
+.contenido1, .contenido2, .contenido3, .contenido4 {
     display: inline-block;
 }
 
 .contenido1 {
     width: 86%;
+}
+
+.contenido3 {
+    width: 24%;
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+.contenido3 p {
+    color: #3c444b;
+}
+
+.contenido4 {
+    width: 70%;
+}
+
+.contenido3, .contenido4 {
+    padding: 4px 0;
 }
 
 .button-ios {
@@ -324,11 +347,26 @@ ion-slides ion-slide h3 {
 }
 
 .nowplaying {
+    background-color: rgba(27,33,40,0.6);
+}
+
+.nowplaying, .vertodos {
     width: 100%;
     height: 45px;
     z-index: 2;
     position: absolute;
-    background-color: rgba(27,33,40,0.6);
+}
+
+.vertodos {
+    //top: 200px;
+    right: 0;
+    width: 22%;
+    padding: 14px;
+}
+
+.vertodos p, .vertodos ion-icon {
+    color: #f3f3f3;
+    display: inline-block;
 }
 
 .flex-container {

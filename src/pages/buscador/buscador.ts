@@ -78,11 +78,13 @@ export class BuscadorPage {
                 this.filmID = value.id;
                 this.ds.getFilmDetail(this.filmID)
                 .then( data => {
-                    this.films.push({
-                        id: data.id,
-                        imdb_id: data.imdb_id,
-                        poster_path: "http://image.tmdb.org/t/p/w500"+data.poster_path
-                    });
+                    if(data.vote_average > 0){
+                        this.films.push({
+                            id: data.id,
+                            imdb_id: data.imdb_id,
+                            poster_path: "http://image.tmdb.org/t/p/w500"+data.poster_path
+                        });
+                    }
                 })
             })
         })

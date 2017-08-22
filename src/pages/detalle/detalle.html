@@ -8,46 +8,118 @@
 </ion-header>
 
 <ion-content>
-    <!--<button ion-button (click)="close()">
-      <ion-icon name="ios-arrow-back"></ion-icon>
-    </button>-->
+    <div class="circulo">
+        <p>{{film.vote_average}}</p>
+    </div>
     <div class="cabecera" [style.background-image]="'url(' + photo + ')'"></div>
     <div class="informacion">
-        <div class="contenido1">
+        <!--<div class="contenido1">-->
             <div class="titulo">
                 <h2>{{film.title}}</h2>
                 <h3>{{votes.Year}}</h3>
             </div>
         
             <div class="datos">
-                <ion-icon name="ios-clock-outline"></ion-icon>
-                <p>{{votes.Runtime}}</p>
-                <!--<p>|</p>
-                <p>{{votes.Genre}}</p>-->
-                <div *ngFor="let genre of film.genres; let i = index">
-                    <div *ngIf="i < 3" class="genero">
-                        <p>{{genre.name}}</p>
+                <div class="tiempo">
+                    <ion-icon name="ios-clock-outline"></ion-icon>
+                    <p>{{votes.Runtime}}</p>
+                </div>
+                <div class="generos">
+                    <div *ngFor="let genre of film.genres; let i = index">
+                        <div *ngIf="i < 4" class="genero">
+                            <p>{{genre.name}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="contenido2">
+        <!--</div>-->
+        <!--<div class="contenido2">
             <div class="circulo">
                 <p>{{film.vote_average}}</p>
             </div>
-        </div>
+        </div>-->
         
         <div class="linea">
             <h3>Storyline</h3>
         </div>
         <div class="sipnosis">
-            <p>{{film.overview}} (C) {{votes.Production}}.</p>
+            <p>{{film.overview}}</p>
         </div>
         
         <div class="linea">
             <h3>Trailer</h3>
         </div>
         <iframe frameborder="0" [src]="sanitizer.bypassSecurityTrustResourceUrl(videoUrl)" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        
+        <div class="linea">
+            <h3>About Film</h3>
+        </div>
+        <div class="sipnosis">
+            <div>
+                <div class="contenido3">
+                    <p>Actors:</p>
+                </div>
+                <div class="contenido4">
+                    <p>{{votes.Actors}}.</p>
+                </div>
+            </div>
+            <div>
+                <div class="contenido3">
+                    <p>Director:</p>
+                </div>
+                <div class="contenido4">
+                    <p>{{votes.Director}}.</p>
+                </div>
+            </div>
+            <div>
+                <div class="contenido3">
+                    <p>Production:</p>
+                </div>
+                <div class="contenido4">
+                    <p>{{votes.Production}}.</p>
+                </div>
+            </div>
+            <div>
+                <div class="contenido3">
+                    <p>Released:</p>
+                </div>
+                <div class="contenido4">
+                    <p>{{votes.Released}}.</p>
+                </div>
+            </div>
+            <div>
+                <div class="contenido3">
+                    <p>Runtime:</p>
+                </div>
+                <div class="contenido4">
+                    <p>{{votes.Runtime}}.</p>
+                </div>
+            </div>
+            <div>
+                <div class="contenido3">
+                    <p>Genres:</p>
+                </div>
+                <div class="contenido4">
+                    <p>{{votes.Genre}}.</p>
+                </div>
+            </div>
+            <div>
+                <div class="contenido3">
+                    <p>Country:</p>
+                </div>
+                <div class="contenido4">
+                    <p>{{votes.Country}}.</p>
+                </div>
+            </div>
+            <div>
+                <div class="contenido3">
+                    <p>Awards:</p>
+                </div>
+                <div class="contenido4">
+                    <p>{{votes.Awards}}</p>
+                </div>
+            </div>
+        </div>
         
         <div class="linea">
             <h3>You may also like</h3>

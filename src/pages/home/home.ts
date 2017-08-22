@@ -1,11 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav } from 'ionic-angular';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
-
-/*import {
-    ListapelisPage
-    }
-    from '../listapelis/listapelis';*/
     
 import {
     VertodosPage
@@ -16,11 +11,6 @@ import {
     DetallePage
     }
     from '../detalle/detalle';
-    
-import {
-    BuscadorPage
-    }
-    from '../buscador/buscador';
 
 import {
     MovieServiceProvider
@@ -34,10 +24,6 @@ import {
   providers: [ MovieServiceProvider ]
 })
 export class HomePage {
-    @ViewChild(Nav) nav: Nav;
-    //rootPage = HomePage;
-    //buscadorPage: any = BuscadorPage;
-    
     public films: any;
     public filmsPlaying: any;
     public filmsRated: any;
@@ -76,7 +62,7 @@ export class HomePage {
     this.listID = this.navParams.get('listID');
     this.photos = [];
     this.photo;
-    //this.loader = this.loadingCtrl.create();
+    this.loader = this.loadingCtrl.create();
   }
   
   goToFicha(filmID, filmIMDB){
@@ -85,15 +71,6 @@ export class HomePage {
   
   goToVerTodos(listID){
     this.navCtrl.push(VertodosPage, { listID: listID });
-  }
-  
-  OpenPage(page: any){
-    //this.menu.close();
-    this.nav.setRoot(page);
-  }
-  
-  goToBuscador(){
-    this.nav.setRoot(BuscadorPage);
   }
   
   ionViewDidLoad() {
@@ -179,36 +156,5 @@ export class HomePage {
         .catch(error => {
             console.error(error);
         })
-    
-    this.ds.getListGenres()
-        .then( data => {
-            this.genreFilms = data.genres;
-            this.genreFilms.forEach( (value) => {
-                this.genreID = value.id;
-                this.ds.getListFilms(this.genreID)
-                    .then(data => {
-                    this.filmDetail = data.results;
-                    this.filmDetail.forEach( (value) => {
-                        this.filmID = value.id;
-                        this.ds.getFilmDetail(this.filmID)
-                        .then( data => {
-                            this.filmsGenre.push({
-                                title: data.title,
-                                id: data.id,
-                                imdb_id: data.imdb_id,
-                                poster_path: "http://image.tmdb.org/t/p/w500"+data.poster_path,
-                                backdrop_path: "http://image.tmdb.org/t/p/w500"+data.backdrop_path,
-                                vote_average: data.vote_average
-                            });
-                        //console.log(data)
-                    })
-                })
-            })
-            .catch(error => {
-                console.error(error);
-            })
-        })
-    })
-        
     }
 }

@@ -23,9 +23,9 @@ export class ListapelisPage {
   public filmDetail: any;
   public genreID: number;
   public filmID: number;
+  public genreName: string;
   public filmIMDB: string;
   public photos: any;
-  public photo: string;
   
   constructor(
     public navCtrl: NavController,
@@ -35,14 +35,10 @@ export class ListapelisPage {
     this.films = [];
     this.filmDetail = [];
     this.photos = [];
-    this.photo;
     this.genreID = this.navParams.get('genreID');
     this.filmID = this.navParams.get('filmID');
+    this.genreName = this.navParams.get('genreName');
     this.filmIMDB = this.navParams.get('filmIMDB');
-  }
-  
-  goToListaPelis(genreID) {
-    this.navCtrl.push(ListapelisPage, { genreID: genreID });
   }
   
   goToFicha(filmID, filmIMDB){
@@ -53,19 +49,17 @@ export class ListapelisPage {
     this.ds.getListFilms(this.genreID)
         .then( data => {
             this.filmDetail = data.results;
-            this.photo = "http://image.tmdb.org/t/p/w500"+data.results[0].backdrop_path;
             this.filmDetail.forEach( (value) => {
                 this.filmID = value.id;
                 this.ds.getFilmDetail(this.filmID)
                 .then( data => {
-                    this.films.push({
-                        title: data.title,
-                        id: data.id,
-                        imdb_id: data.imdb_id,
-                        poster_path: "http://image.tmdb.org/t/p/w500/"+data.poster_path,
-                        vote_average: data.vote_average
-                    });
-                    console.log(data);
+                    if(data.vote_average > 0){
+                        this.films.push({
+                            id: data.id,
+                            imdb_id: data.imdb_id,
+                            poster_path: "http://image.tmdb.org/t/p/w500/"+data.poster_path
+                        });
+                    }
                 })
                 this.ds.getFilmVotes(this.filmIMDB)
                 .then( data => {
@@ -74,7 +68,60 @@ export class ListapelisPage {
                     });
                 })
             })
-            console.log(data);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+        
+    this.ds.getListFilms2(this.genreID)
+        .then( data => {
+            this.filmDetail = data.results;
+            this.filmDetail.forEach( (value) => {
+                this.filmID = value.id;
+                this.ds.getFilmDetail(this.filmID)
+                .then( data => {
+                    if(data.vote_average > 0){
+                        this.films.push({
+                            id: data.id,
+                            imdb_id: data.imdb_id,
+                            poster_path: "http://image.tmdb.org/t/p/w500/"+data.poster_path
+                        });
+                    }
+                })
+                this.ds.getFilmVotes(this.filmIMDB)
+                .then( data => {
+                    this.films.push({
+                        runtime: data.Runtime
+                    });
+                })
+            })
+        })
+        .catch(error => {
+            console.error(error);
+        })
+        
+    this.ds.getListFilms3(this.genreID)
+        .then( data => {
+            this.filmDetail = data.results;
+            this.filmDetail.forEach( (value) => {
+                this.filmID = value.id;
+                this.ds.getFilmDetail(this.filmID)
+                .then( data => {
+                    if(data.vote_average > 0 || data.poster_path != null){
+                        this.films.push({
+                            id: data.id,
+                            imdb_id: data.imdb_id,
+                            poster_path: "http://image.tmdb.org/t/p/w500/"+data.poster_path
+                        });
+                    }
+                })
+                this.ds.getFilmVotes(this.filmIMDB)
+                .then( data => {
+                    this.films.push({
+                        runtime: data.Runtime
+                    });
+                })
+            })
         })
         .catch(error => {
             console.error(error);

@@ -3,21 +3,32 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title></ion-title>
+    <ion-title>{{listID}}</ion-title>
   </ion-navbar>
-    <ion-searchbar
+    <!--<ion-searchbar
       [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="onSearchInput()">
-    </ion-searchbar>
+    </ion-searchbar>-->
 </ion-header>
 
 <ion-content>
-    <div *ngIf="searching" class="spinner-container">
+    <!--<div *ngIf="searching" class="spinner-container">
         <ion-spinner></ion-spinner>
-    </div>
-    <div class="similar" *ngFor="let film of films">
-        <div>
-            <p>{{film.title}}</p>
-            <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+    </div>-->
+    <!--<ion-list [virtualScroll]="films" approxItemHeight="50px">
+        <ion-item *virtualItem="#film">
+            <h2>{{film.title}}</h2>
+        </ion-item>
+    </ion-list>
+
+ <ion-infinite-scroll (infinite)="doInfinite($event)">
+   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+ </ion-infinite-scroll>-->
+    
+    <div class="lista">
+        <div class="similar" *ngFor="let film of films">
+            <div>
+                <img (click)="goToFicha(film.id, film.imdb_id)" src={{film.poster_path}}>
+            </div>
         </div>
     </div>
 </ion-content>
